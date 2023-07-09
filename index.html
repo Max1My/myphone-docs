@@ -295,7 +295,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;graphql&quot;,&quot;json&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -305,10 +305,8 @@
     <div class="toc-wrapper">
       <img src="images/logo-8e70cfbc.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="graphql">graphql</a>
+              <a href="#" data-language-name="json">json</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -320,15 +318,36 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#filters" class="toc-h1 toc-link" data-title="Filters">Filters</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#variables" class="toc-h2 toc-link" data-title="Variables">Variables</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sorting" class="toc-h1 toc-link" data-title="Sorting">Sorting</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#variables-2" class="toc-h2 toc-link" data-title="Variables">Variables</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#simcards" class="toc-h1 toc-link" data-title="Simcards">Simcards</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-simcards" class="toc-h2 toc-link" data-title="Get All simcards">Get All simcards</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#get-a-specific-simcard" class="toc-h2 toc-link" data-title="Get a Specific Simcard">Get a Specific Simcard</a>
                   </li>
                   <li>
                     <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
@@ -349,51 +368,153 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the MyPhone API! You can use our API to access MyPhone API endpoints, which can get information.</p>
-<h1 id='authentication'>Authentication</h1>
+<h1 id='authentication'>Authentication</h1><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/login</code></p>
+
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"access"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"expires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-16T11:58:20.333Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"refresh"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"expires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-23T11:58:20.333Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>token</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>MyPhone uses API keys to allow access to the API. You can register a new MyPhone API key at our portal.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>MyPhone expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p><code>Authorization: Bearer token</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>token</code> with your personal API key.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='filters'>Filters</h1>
+<p>Filtering can be applied to those queries that support them</p>
+<h3 id='variables'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>field</td>
+<td>None</td>
+<td>Select one of the fields by which you want to filter from query</td>
+</tr>
+<tr>
+<td>value</td>
+<td>None</td>
+<td>The value can be of different types, such as integers, filters, strings and lists.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td>None</td>
+<td>Choose one of the operators &quot;OR&quot; or &quot;AND&quot;</td>
+</tr>
+<tr>
+<td>comparator</td>
+<td>None</td>
+<td>Choose one of the comparotors.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="err">"filter":</span><span class="w"> </span><span class="err">[</span><span class="p">{</span><span class="w">
+                </span><span class="err">"</span><span class="n">field</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">some_field</span><span class="err">"</span><span class="p">,</span><span class="w">
+                </span><span class="err">"</span><span class="n">value</span><span class="err">":</span><span class="w"> </span><span class="n">some_value</span><span class="p">,</span><span class="w">
+                </span><span class="err">"</span><span class="n">operator</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">OR</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">AND</span><span class="err">"</span><span class="p">,</span><span class="w">
+                </span><span class="err">"</span><span class="n">comparator</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">EQ</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">NEQ</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">LT</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">LTE</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">GT</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">GTE</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">IN</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">NIN</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">CONTAINS</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">STARTS_WITH</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">ENDS_WITH</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">NULL</span><span class="err">"</span><span class="w">
+            </span><span class="p">}</span><span class="err">]</span><span class="w">
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+</span></code></pre></div><h1 id='sorting'>Sorting</h1>
+<p>Sorting can be applied to those queries that support them</p>
+<h3 id='variables-2'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>field</td>
+<td>None</td>
+<td>Select one of the fields by which you want to sort from query</td>
+</tr>
+<tr>
+<td>order</td>
+<td>None</td>
+<td>Choose how you want to sort &quot;ASC&quot; or &quot;DESC&quot;.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="err">"sort":</span><span class="w"> </span><span class="err">[</span><span class="p">{</span><span class="w">
+                </span><span class="err">"</span><span class="n">field</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">some_field</span><span class="err">"</span><span class="p">,</span><span class="w">
+                </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">OR</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">AND</span><span class="err">"</span><span class="p">,</span><span class="w">
+            </span><span class="p">}</span><span class="err">]</span><span class="w">
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
+</span></code></pre></div><h1 id='simcards'>Simcards</h1><h2 id='get-all-simcards'>Get All simcards</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">],</span><span class="w"> </span><span class="nv">$sort</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">SortInput</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">simcards</span><span class="p">(</span><span class="n">pagination</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">},</span><span class="w">
+                     </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w">
+                     </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="nv">$sort</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">items</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">id</span><span class="w">
+                    </span><span class="n">iccidPlastic</span><span class="w">
+                    </span><span class="n">simId</span><span class="w">
+                    </span><span class="n">isBlocked</span><span class="w">
+                    </span><span class="n">allowFreeCallerIdChange</span><span class="w">
+                    </span><span class="n">allowFreeVoiceSubstitution</span><span class="w">
+                    </span><span class="n">resource</span><span class="p">{</span><span class="w">
+                        </span><span class="n">balance</span><span class="w">
+                        </span><span class="n">dataBalance</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">fmcs</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">msisdn</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">callerIds</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">msisdn</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">externalMsisdns</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">msisdn</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">currentTariff</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">name</span><span class="w">
+                        </span><span class="n">packageTotalCallsMaxDuration</span><span class="w">
+                        </span><span class="n">tariffType</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">profile</span><span class="w">
+                    </span><span class="n">description</span><span class="w">
+                    </span><span class="n">latestActivity</span><span class="w">
+                    </span><span class="n">tariffExpiresAt</span><span class="w">
+                    </span><span class="n">imei</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="n">imei</span><span class="w">
+                      </span><span class="n">imeiIsCorrect</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">isArchived</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">count</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -414,33 +535,159 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>This endpoint retrieves all simcards.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='fields'>Fields</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Field</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>id</td>
+<td>Internal ID Simcard</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>iccidPlastic</td>
+<td>It&#39;s a unique 18-22 digit code that includes a SIM card&#39;s country, home network, and identification number.</td>
+</tr>
+<tr>
+<td>simId</td>
+<td>Your external sim card ID</td>
+</tr>
+<tr>
+<td>isBlocked</td>
+<td>Sim card status</td>
+</tr>
+<tr>
+<td>allowFreeCallerIdChange</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>allowFreeVoiceSubstitution</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>resource</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>dataBalance</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>fmcs</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>msisdn</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>callerIds</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>msisdn</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>externalMsisdns</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>msisdn</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>currentTariff</td>
+<td>Current Tarrif</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Tarrif Name</td>
+</tr>
+<tr>
+<td>packageTotalCallsMaxDuration</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>tariffType</td>
+<td>Tariff Type</td>
+</tr>
+<tr>
+<td>profile</td>
+<td>Sim Card Profile(S1, S2, etc.).</td>
+</tr>
+<tr>
+<td>description</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>latestActivity</td>
+<td>Latest Activity</td>
+</tr>
+<tr>
+<td>tariffExpiresAt</td>
+<td>Tariff Expires At(Date)</td>
+</tr>
+<tr>
+<td>imei</td>
+<td>imei</td>
+</tr>
+<tr>
+<td>imeiIsCorrect</td>
+<td>Status Imei</td>
+</tr>
+<tr>
+<td>isArchived</td>
+<td>Status Archived sim card</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Maximum number of displayed objects</td>
+</tr>
+</tbody></table>
+<h3 id='variables-3'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>The offset query parameter is used to exclude from a response the first N items of a resource collection.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#filters">Filters</a></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — only authorized users can use this request!
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id='get-a-specific-simcard'>Get a Specific Simcard</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -469,7 +716,7 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint retrieves a specific kitten.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -508,7 +755,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -584,10 +831,8 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="graphql">graphql</a>
+                <a href="#" data-language-name="json">json</a>
           </div>
       </div>
     </div>
