@@ -187,35 +187,35 @@ This endpoint retrieves all simcards.
 
 ### Fields
 
-Field | Description
------- | --------------
-id | Internal ID Simcard
-iccidPlastic | It's a unique 18-22 digit code that includes a SIM card's country, home network, and identification number. 
-simId | Your external sim card ID
-isBlocked | Sim card status
-allowFreeCallerIdChange | desc
-allowFreeVoiceSubstitution| desc
-resource | desc
-balance | desc
-dataBalance | desc
-fmcs | desc
-msisdn | desc
-callerIds | desc
-msisdn | desc
-externalMsisdns | desc
-msisdn | desc
-currentTariff | Current Tarrif
-name | Tarrif Name
-packageTotalCallsMaxDuration | desc
-tariffType | Tariff Type
-profile | Sim Card Profile(S1, S2, etc.).
-description | desc
-latestActivity | Latest Activity
-tariffExpiresAt | Tariff Expires At(Date)
-imei | imei
-imeiIsCorrect | Status Imei
-isArchived | Status Archived sim card
-count | Maximum number of displayed objects
+Field | Type    | Description
+------ |---------| --------------
+id | ID      | Internal ID Simcard                                                                                      
+iccidPlastic | String  | It's a unique 18-22 digit code that includes a SIM card's country, home network, and identification number. 
+simId | String  | Your external sim card ID           
+isBlocked | Boolean | Sim card status                     
+allowFreeCallerIdChange | Boolean | desc                                
+allowFreeVoiceSubstitution | Boolean | desc                                
+resource | Array of objects | desc                                
+balance | Float   | desc                                
+dataBalance | Float   | desc                                
+fmcs | Object  | desc                                
+msisdn | String  | desc                                
+callerIds | List    | desc                                
+msisdn | String  | desc                                
+externalMsisdns | List    | desc                                
+msisdn | String  | desc                                
+currentTariff | Object  | Current Tarrif                      
+name | String  | Tarrif Name                         
+packageTotalCallsMaxDuration | Integer | desc                                
+tariffType | String  | Tariff Type                         
+profile | String  | Sim Card Profile(S1, S2, etc.).     
+description | String  | desc                                
+latestActivity | Date    | Latest Activity                     
+tariffExpiresAt | Date    | Tariff Expires At           
+imei | String  | imei                                
+imeiIsCorrect | Boolean | Status Imei                         
+isArchived | Boolean | Status Archived sim card            
+count | Integer | Maximum number of displayed objects 
 
 ### Variables
 
@@ -233,30 +233,48 @@ Remember — only authorized users can use this request!
 
 ## Get a Specific Simcard
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+```graphql
+            query($id: ID!) {
+                simcard(id: $id) {
+                items {
+                    id
+                    iccidPlastic
+                    simId
+                    isBlocked
+                    allowFreeCallerIdChange
+                    allowFreeVoiceSubstitution
+                    resource{
+                        balance
+                        dataBalance
+                    }
+                    fmcs {
+                        msisdn
+                    }
+                    callerIds {
+                        msisdn
+                    }
+                    externalMsisdns {
+                        msisdn
+                    }
+                    currentTariff {
+                        name
+                        packageTotalCallsMaxDuration
+                        tariffType
+                    }
+                    profile
+                    description
+                    latestActivity
+                    tariffExpiresAt
+                    imei {
+                      imei
+                      imeiIsCorrect
+                    }
+                    isArchived
+                }
+                count
+            }
+        }
 ```
 
 > The above command returns JSON structured like this:
@@ -271,47 +289,59 @@ let max = api.kittens.get(2);
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves a specific simcard.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST http://api.myphone.group/partner/graphql`
 
-### URL Parameters
+### Fields
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Field | Type    | Description
+------ |---------| --------------
+id | ID      | Internal ID Simcard                                                                                      
+iccidPlastic | String  | It's a unique 18-22 digit code that includes a SIM card's country, home network, and identification number. 
+simId | String  | Your external sim card ID           
+isBlocked | Boolean | Sim card status                     
+allowFreeCallerIdChange | Boolean | desc                                
+allowFreeVoiceSubstitution | Boolean | desc                                
+resource | Array of objects | desc                                
+balance | Float   | desc                                
+dataBalance | Float   | desc                                
+fmcs | Object  | desc                                
+msisdn | String  | desc                                
+callerIds | List    | desc                                
+msisdn | String  | desc                                
+externalMsisdns | List    | desc                                
+msisdn | String  | desc                                
+currentTariff | Object  | Current Tarrif                      
+name | String  | Tarrif Name                         
+packageTotalCallsMaxDuration | Integer | desc                                
+tariffType | String  | Tariff Type                         
+profile | String  | Sim Card Profile(S1, S2, etc.).     
+description | String  | desc                                
+latestActivity | Date    | Latest Activity                     
+tariffExpiresAt | Date    | Tariff Expires At           
+imei | String  | imei                                
+imeiIsCorrect | Boolean | Status Imei                         
+isArchived | Boolean | Status Archived sim card            
+count | Integer | Maximum number of displayed objects 
 
-## Delete a Specific Kitten
+### Filters
 
-```ruby
-require 'kittn'
+Parameter | Type | Description
+--------- |------| -----------
+ID | ID   | Enter the id of the sim card you want to search
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
 
-```python
-import kittn
+## Block a Specific Simcard
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+```graphql
+mutation($simcardId: ID!) {
+                    simcard {
+                        block(simcardId: $simcardId)
+                    }
+                }
 ```
 
 > The above command returns JSON structured like this:
@@ -323,15 +353,60 @@ let max = api.kittens.delete(2);
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint blocking a specific simcard.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`POST http://api.myphone.group/partner/graphql`
 
-### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+### Variables
 
+Variable | Type | Description
+---------|------|-------------
+simcardId | ID | Enter the id of the sim card you want to block
+
+## Unblock a Specific Simcard
+
+```graphql
+mutation($simcardId: ID!) {
+                    simcard {
+                        unblock(simcardId: $simcardId)
+                    }
+                }
+```
+
+This endpoint unblocking a specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+simcardId | ID | Enter the id of the sim card you want to unblock
+
+## Attach Caller ID
+
+```graphql
+mutation($sim_card_id: ID!, $caller_id: String!){
+                simcard {
+                    attachCallerId(id: $sim_card_id, msisdn: $caller_id)
+                }   
+            }
+```
+
+This endpoint attaching a specific simcard by caller id.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+sim_card_id | ID | Enter the id of the sim card you want to unblock
+caller_id | ID | Enter the id of the sim card you want to unblock
