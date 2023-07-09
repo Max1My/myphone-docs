@@ -2,10 +2,8 @@
 title: API Reference
 
 language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
-  - shell
-  - ruby
-  - python
-  - javascript
+  - graphql
+  - json
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -29,72 +27,135 @@ Welcome to the MyPhone API! You can use our API to access MyPhone API endpoints,
 
 # Authentication
 
+### HTTP Request
+
+`POST http://api.myphone.group/partner/login`
+
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
+```json
+{
+  "username": "username",
+  "password": "password"
+}
+```
+> The above command returns JSON structured like this:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```json
+{
+    "data": {
+        "access": {
+            "token": "token",
+            "expires": "2023-07-16T11:58:20.333Z"
+        },
+        "refresh": {
+            "token": "token",
+            "expires": "2023-07-23T11:58:20.333Z"
+        }
+    }
+}
 ```
 
-```python
-import kittn
+> Make sure to replace `token` with your API key.
 
-api = kittn.authorize('meowmeowmeow')
-```
+MyPhone uses API keys to allow access to the API. You can register a new MyPhone API key at our portal.
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
+MyPhone expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: Bearer token`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>token</code> with your personal API key.
 </aside>
 
-# Kittens
+# Filters
 
-## Get All Kittens
+Filtering can be applied to those queries that support them
 
-```ruby
-require 'kittn'
+### Variables
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+Parameter | Default | Description
+--------- |---------| -----------
+field | None    | Select one of the fields by which you want to filter from query
+value | None    | The value can be of different types, such as integers, filters, strings and lists.
+operator | None    | Choose one of the operators "OR" or "AND"
+comparator | None    | Choose one of the comparotors.
+
+```graphql
+"filter": [{
+                "field": "some_field",
+                "value": some_value,
+                "operator": "OR", "AND",
+                "comparator": "EQ", "NEQ", "LT", "LTE", "GT", "GTE", "IN", "NIN", "CONTAINS", "STARTS_WITH", "ENDS_WITH", "NULL"
+            }]
+
+```
+# Sorting
+
+Sorting can be applied to those queries that support them
+
+### Variables
+
+Parameter | Default | Description
+--------- |---------| -----------
+field | None    | Select one of the fields by which you want to sort from query
+order | None    | Choose how you want to sort "ASC" or "DESC".
+
+```graphql
+"sort": [{
+                "field": "some_field",
+                "order": "OR", "AND",
+            }]
+
 ```
 
-```python
-import kittn
+# Simcards
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Get All simcards
 
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+```graphql
+query($offset: Int, $limit: Int, $filter: [FilterInput], $sort: [SortInput]) {
+            simcards(pagination: {offset: $offset, limit: $limit},
+                     filter: $filter,
+                     sort: $sort) {
+                items {
+                    id
+                    iccidPlastic
+                    simId
+                    isBlocked
+                    allowFreeCallerIdChange
+                    allowFreeVoiceSubstitution
+                    resource{
+                        balance
+                        dataBalance
+                    }
+                    fmcs {
+                        msisdn
+                    }
+                    callerIds {
+                        msisdn
+                    }
+                    externalMsisdns {
+                        msisdn
+                    }
+                    currentTariff {
+                        name
+                        packageTotalCallsMaxDuration
+                        tariffType
+                    }
+                    profile
+                    description
+                    latestActivity
+                    tariffExpiresAt
+                    imei {
+                      imei
+                      imeiIsCorrect
+                    }
+                    isArchived
+                }
+                count
+            }
+        }
 ```
 
 > The above command returns JSON structured like this:
@@ -118,24 +179,59 @@ let kittens = api.kittens.get();
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all simcards.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST http://api.myphone.group/partner/graphql`
 
-### Query Parameters
+### Fields
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Field | Description
+------ | --------------
+id | Internal ID Simcard
+iccidPlastic | It's a unique 18-22 digit code that includes a SIM card's country, home network, and identification number. 
+simId | Your external sim card ID
+isBlocked | Sim card status
+allowFreeCallerIdChange | desc
+allowFreeVoiceSubstitution| desc
+resource | desc
+balance | desc
+dataBalance | desc
+fmcs | desc
+msisdn | desc
+callerIds | desc
+msisdn | desc
+externalMsisdns | desc
+msisdn | desc
+currentTariff | Current Tarrif
+name | Tarrif Name
+packageTotalCallsMaxDuration | desc
+tariffType | Tariff Type
+profile | Sim Card Profile(S1, S2, etc.).
+description | desc
+latestActivity | Latest Activity
+tariffExpiresAt | Tariff Expires At(Date)
+imei | imei
+imeiIsCorrect | Status Imei
+isArchived | Status Archived sim card
+count | Maximum number of displayed objects
+
+### Variables
+
+Parameter | Type             | Description
+--------- |------------------| -----------
+offset | Integer          | The offset query parameter is used to exclude from a response the first N items of a resource collection.
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
+filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
+
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — only authorized users can use this request!
 </aside>
 
-## Get a Specific Kitten
+## Get a Specific Simcard
 
 ```ruby
 require 'kittn'
