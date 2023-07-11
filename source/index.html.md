@@ -410,3 +410,246 @@ Variable | Type | Description
 ---------|------|-------------
 sim_card_id | ID | Enter the id of the sim card you want to unblock
 caller_id | ID | Enter the id of the sim card you want to unblock
+
+## Detach Caller
+
+```graphql
+mutation($sim_card_id: ID!){
+                simcard{
+                    detachCallerId(id: $sim_card_id)
+                }
+            }
+```
+
+This endpoint detaching a specific simcard by caller id.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+sim_card_id | ID | Enter the id of the sim card you want to detach
+
+## Charge Balance
+
+```graphql
+mutation($simcardId: ID!, $amount: Decimal!, $comment: String!) {
+                simcard {
+                    chargeBalance(simcardId: $simcardId,
+                           amount: $amount,
+                           comment: $comment)
+                }
+            }
+```
+
+This endpoint charging balance for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+simcardId | ID | Enter the id of the sim card you want to charge
+amount | Float | Enter the replenishment amount
+comment | String | Destination
+
+## Charge Data Balance
+
+```graphql
+mutation($simcardId: ID!, $amount: Decimal!, $comment: String!) {
+                simcard {
+                    chargeDataBalance(simcardId: $simcardId,
+                           amount: $amount,
+                           comment: $comment)
+                }
+            }
+```
+
+This endpoint charging data balance for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+simcardId | ID | Enter the id of the sim card you want to charge
+amount | Float | Enter the replenishment amount
+comment | String | Destination
+
+## Recharge Balance
+
+```graphql
+mutation($simcardId: ID!, $amount: Decimal!, $comment: String!) {
+                simcard {
+                    rechargeBalance(simcardId: $simcardId,
+                           amount: $amount,
+                           comment: $comment)
+                }
+            }
+```
+
+This endpoint recharging balance for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+simcardId | ID | Enter the id of the sim card you want to charge
+amount | Float | Enter the replenishment amount
+comment | String | Destination
+
+## Recharge Data Balance
+
+```graphql
+mutation($simcardId: ID!, $amount: Decimal!, $comment: String!) {
+                simcard {
+                    rechargeDataBalance(simcardId: $simcardId,
+                           amount: $amount,
+                           comment: $comment)
+                }
+            }
+```
+
+This endpoint recharging data balance for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+simcardId | ID | Enter the id of the sim card you want to charge
+amount | Float | Enter the replenishment amount
+comment | String | Destination
+
+
+## Change Tariff
+
+```graphql
+mutation($simcardId: ID!, $tariffId: ID!) {
+                simcard {
+                    changeTariff(simcardId: $simcardId, tariffId: $tariffId, free: false)
+                }
+            }
+```
+
+This endpoint change tariff for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type   | Description
+---------|--------|-------------
+simcardId | ID     | Enter the id of the sim card you want to charge
+tariffId | ID     | Get Available tariffs you can [This]()
+
+
+### Update Description
+
+```graphql
+mutation($sim_card_id: ID!, $description: String!){
+                simcard {
+                    updateDescription(id: $sim_card_id, description: $description)
+                }   
+            }
+```
+
+This endpoint update description for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type   | Description
+---------|--------|-------------
+simcardId | ID     | Enter the id of the sim card you want to charge
+description | String | Enter the description for simcard
+
+
+## Change Remaining Tariff Days
+
+```graphql
+mutation($sim_card_id: ID!, $remaining_days: Int!){
+                simcard {
+                    changeRemainingTariffDays(simcardId: $sim_card_id, day: $remaining_days)
+                }   
+            }
+```
+
+This endpoint change remaining tariff days for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type    | Description
+---------|---------|-------------
+sim_card_id | ID      | Enter the id of the sim card you want to charge
+remaining_days | Integer | Enter count days
+
+
+## Archive Simcard
+
+```graphql
+mutation($simcardId: ID!) {
+                    simcard {
+                        archive(simcardId: $simcardId)
+                    }
+                }
+```
+
+This endpoint archive specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type    | Description
+---------|---------|-------------
+simcardId | ID      | Enter the id of the sim card you want to archive
+
+## Unzip Simcard
+
+```graphql
+mutation($simcardId: ID!) {
+                    simcard {
+                        unarchive(simcardId: $simcardId)
+                    }
+                }
+```
+
+This endpoint unzip specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type    | Description
+---------|---------|-------------
+sim_card_id | ID      | Enter the id of the sim card you want to unzip
