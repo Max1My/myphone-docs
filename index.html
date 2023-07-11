@@ -358,6 +358,33 @@
                   <li>
                     <a href="#attach-caller-id" class="toc-h2 toc-link" data-title="Attach Caller ID">Attach Caller ID</a>
                   </li>
+                  <li>
+                    <a href="#detach-caller" class="toc-h2 toc-link" data-title="Detach Caller">Detach Caller</a>
+                  </li>
+                  <li>
+                    <a href="#charge-balance" class="toc-h2 toc-link" data-title="Charge Balance">Charge Balance</a>
+                  </li>
+                  <li>
+                    <a href="#charge-data-balance" class="toc-h2 toc-link" data-title="Charge Data Balance">Charge Data Balance</a>
+                  </li>
+                  <li>
+                    <a href="#recharge-balance" class="toc-h2 toc-link" data-title="Recharge Balance">Recharge Balance</a>
+                  </li>
+                  <li>
+                    <a href="#recharge-data-balance" class="toc-h2 toc-link" data-title="Recharge Data Balance">Recharge Data Balance</a>
+                  </li>
+                  <li>
+                    <a href="#change-tariff" class="toc-h2 toc-link" data-title="Change Tariff">Change Tariff</a>
+                  </li>
+                  <li>
+                    <a href="#change-remaining-tariff-days" class="toc-h2 toc-link" data-title="Change Remaining Tariff Days">Change Remaining Tariff Days</a>
+                  </li>
+                  <li>
+                    <a href="#archive-simcard" class="toc-h2 toc-link" data-title="Archive Simcard">Archive Simcard</a>
+                  </li>
+                  <li>
+                    <a href="#unzip-simcard" class="toc-h2 toc-link" data-title="Unzip Simcard">Unzip Simcard</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1014,6 +1041,299 @@ Remember — only authorized users can use this request!
 <td>caller_id</td>
 <td>ID</td>
 <td>Enter the id of the sim card you want to unblock</td>
+</tr>
+</tbody></table>
+<h2 id='detach-caller'>Detach Caller</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$sim_card_id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!){</span><span class="w">
+                </span><span class="n">simcard</span><span class="p">{</span><span class="w">
+                    </span><span class="n">detachCallerId</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$sim_card_id</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint detaching a specific simcard by caller id.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-7'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sim_card_id</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to detach</td>
+</tr>
+</tbody></table>
+<h2 id='charge-balance'>Charge Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$amount</span><span class="p">:</span><span class="w"> </span><span class="n">Decimal</span><span class="p">!,</span><span class="w"> </span><span class="nv">$comment</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">chargeBalance</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">,</span><span class="w">
+                           </span><span class="n">amount</span><span class="p">:</span><span class="w"> </span><span class="nv">$amount</span><span class="p">,</span><span class="w">
+                           </span><span class="n">comment</span><span class="p">:</span><span class="w"> </span><span class="nv">$comment</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint charging balance for specific simcard.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-8'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to charge</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Float</td>
+<td>Enter the replenishment amount</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td>Destination</td>
+</tr>
+</tbody></table>
+<h2 id='charge-data-balance'>Charge Data Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$amount</span><span class="p">:</span><span class="w"> </span><span class="n">Decimal</span><span class="p">!,</span><span class="w"> </span><span class="nv">$comment</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">chargeDataBalance</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">,</span><span class="w">
+                           </span><span class="n">amount</span><span class="p">:</span><span class="w"> </span><span class="nv">$amount</span><span class="p">,</span><span class="w">
+                           </span><span class="n">comment</span><span class="p">:</span><span class="w"> </span><span class="nv">$comment</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint charging data balance for specific simcard.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-9'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to charge</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Float</td>
+<td>Enter the replenishment amount</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td>Destination</td>
+</tr>
+</tbody></table>
+<h2 id='recharge-balance'>Recharge Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$amount</span><span class="p">:</span><span class="w"> </span><span class="n">Decimal</span><span class="p">!,</span><span class="w"> </span><span class="nv">$comment</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">rechargeBalance</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">,</span><span class="w">
+                           </span><span class="n">amount</span><span class="p">:</span><span class="w"> </span><span class="nv">$amount</span><span class="p">,</span><span class="w">
+                           </span><span class="n">comment</span><span class="p">:</span><span class="w"> </span><span class="nv">$comment</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint recharging balance for specific simcard.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-10'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to charge</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Float</td>
+<td>Enter the replenishment amount</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td>Destination</td>
+</tr>
+</tbody></table>
+<h2 id='recharge-data-balance'>Recharge Data Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$amount</span><span class="p">:</span><span class="w"> </span><span class="n">Decimal</span><span class="p">!,</span><span class="w"> </span><span class="nv">$comment</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">rechargeDataBalance</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">,</span><span class="w">
+                           </span><span class="n">amount</span><span class="p">:</span><span class="w"> </span><span class="nv">$amount</span><span class="p">,</span><span class="w">
+                           </span><span class="n">comment</span><span class="p">:</span><span class="w"> </span><span class="nv">$comment</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint recharging data balance for specific simcard.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-11'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to charge</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Float</td>
+<td>Enter the replenishment amount</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td>Destination</td>
+</tr>
+</tbody></table>
+<h2 id='change-tariff'>Change Tariff</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$tariffId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">changeTariff</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">,</span><span class="w"> </span><span class="n">tariffId</span><span class="p">:</span><span class="w"> </span><span class="nv">$tariffId</span><span class="p">,</span><span class="w"> </span><span class="n">free</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint change tariff for specific simcard.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-12'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to charge</td>
+</tr>
+<tr>
+<td>tariffId</td>
+<td>ID</td>
+<td>Get Available tariffs you can <a href="#">This</a></td>
+</tr>
+</tbody></table>
+<h3 id='update-description'>Update Description</h3><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$sim_card_id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$description</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!){</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">updateDescription</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$sim_card_id</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="p">:</span><span class="w"> </span><span class="nv">$description</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">   
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint update description for specific simcard.</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-13'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to charge</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Enter the description for simcard</td>
+</tr>
+</tbody></table>
+<h2 id='change-remaining-tariff-days'>Change Remaining Tariff Days</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$sim_card_id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$remaining_days</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">!){</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">changeRemainingTariffDays</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$sim_card_id</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">:</span><span class="w"> </span><span class="nv">$remaining_days</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">   
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint change remaining tariff days for specific simcard.</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-14'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sim_card_id</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to charge</td>
+</tr>
+<tr>
+<td>remaining_days</td>
+<td>Integer</td>
+<td>Enter count days</td>
+</tr>
+</tbody></table>
+<h2 id='archive-simcard'>Archive Simcard</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">archive</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">)</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint archive specific simcard.</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-15'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to archive</td>
+</tr>
+</tbody></table>
+<h2 id='unzip-simcard'>Unzip Simcard</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">unarchive</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">)</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint unzip specific simcard.</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-16'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sim_card_id</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to unzip</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
