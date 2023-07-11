@@ -653,3 +653,282 @@ This endpoint unzip specific simcard.
 Variable | Type    | Description
 ---------|---------|-------------
 sim_card_id | ID      | Enter the id of the sim card you want to unzip
+
+
+# Tariff
+
+## Get All Tariffs
+
+```graphql
+query($offset: Int, $limit: Int, $filter: [FilterInput]!) {
+            tariffs(pagination: {offset: $offset, limit: $limit},
+                    filter: $filter,
+                    sort: {order: DESC, field: "id"}) {
+                items {
+                    id
+                    name
+                    tariffType
+                    isArchived
+                    cost {
+                        amount {
+                            readable
+                        }
+                    }
+                    callOutgoingRate {
+                        amount {
+                            readable
+                        }
+                    }
+                    callIncomingRate {
+                        amount {
+                            readable
+                        }
+                    }
+                    dataRate {
+                        amount {
+                            readable
+                        }
+                    }
+                    callOutgoingRateAmount
+                    callIncomingRateAmount
+                    dataRateAmount
+                    duration
+                }
+                count
+            }
+        }
+```
+
+This endpoint retrieves all tariffs.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Fields
+
+Field | Type             | Description
+------ |------------------| ---------------------
+id | ID               | Internal ID Tariff                                                                                      
+name | String           | Tariff Name
+tariffType | String           | One of ["PREPAID_UNLIMITED", "PREPAID_PACKAGE", "POSTPAID_MINUTE", "MARGIN_CALCULATE", "RENEWAL_PREPAID_PACKAGE"]          
+isArchived | Boolean          | Tariff status                     
+cost | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                                
+callOutgoingRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Object           | desc                                
+callIncomingRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                                
+dataRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                   
+callOutgoingRateAmount | Integer          |                         
+callIncomingRateAmount | Integer          | desc                                
+dataRateAmount | Integer          | desc                       
+duration | Integer          | desc     
+count | Integer          | Maximum number of displayed objects 
+
+### Variables
+
+Parameter | Type             | Description
+--------- |------------------| -----------
+offset | Integer          | The offset query parameter is used to exclude from a response the first N items of a resource collection.
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
+filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
+
+
+## Get Specific Tariff
+
+```graphql
+query ($id: ID!) {
+            tariff(id: $id) {
+                id
+                tariffType
+                name
+                duration
+                callOutgoingRateAmount
+                callIncomingRateAmount
+                dataRateAmount
+                cost {
+                    amount {
+                        readable
+                    }
+                }
+                callOutgoingRate {
+                    amount{
+                        readable
+                    }
+                }
+                callIncomingRate {
+                    amount {
+                        readable
+                    }
+                }
+                dataRate {
+                    amount {
+                        readable
+                    }
+                }
+                packages {
+                    id
+                    resource {
+                        quota
+                        unit
+                    }
+                }
+            }
+        }
+```
+
+This endpoint retrieves all tariffs.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Fields
+
+Field | Type             | Description
+------ |------------------| ---------------------
+id | ID               | Internal ID Tariff                                                                                      
+name | String           | Tariff Name
+tariffType | String           | One of ["PREPAID_UNLIMITED", "PREPAID_PACKAGE", "POSTPAID_MINUTE", "MARGIN_CALCULATE", "RENEWAL_PREPAID_PACKAGE"]           
+cost | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                                
+callOutgoingRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Object           | desc                                
+callIncomingRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                                
+dataRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                   
+callOutgoingRateAmount | Integer          |                         
+callIncomingRateAmount | Integer          | desc                                
+dataRateAmount | Integer          | desc                       
+duration | Integer          | desc     
+packages | Array of objects | 
+id | ID               | ID Package
+resource | Array of objects | 
+quota | String           | desc
+unit | Integer          | desc
+count | Integer          | Maximum number of displayed objects 
+
+### Variables
+
+Parameter | Type             | Description
+--------- |------------------| -----------
+offset | Integer          | The offset query parameter is used to exclude from a response the first N items of a resource collection.
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
+filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
+
+
+## Activate Tariff
+
+```graphql
+mutation($simcardId: ID!, $tariffId: ID!) {
+                simcard {
+                    changeTariff(simcardId: $simcardId, tariffId: $tariffId, free: false)
+                }
+            }
+```
+
+This endpoint change specific tariff for specific simcard.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type    | Description
+---------|---------|-------------
+simcardId | ID      | Enter the id of the sim card you want to change tariff
+tariffId | ID | Enter the id of the tariff you want to change
+
+## Archive Tariff
+
+```graphql
+mutation($tariff_id: ID!) {
+                tariff {
+                    archive(id: $tariff_id)
+                }
+            }
+```
+
+This endpoint archive specific tariff.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type    | Description
+---------|---------|-------------
+tariff_id | ID | Enter the id of the tariff you want to archive
+
+
+## Create Package
+
+```graphql
+mutation($tariffId: ID!,
+                     $resourceQuota: ID!,
+                     $resourceUnit: QuotaUnit!) {
+                tariff {
+                    createPackage(tariffId: $tariffId,
+                                  resourceQuota: $resourceQuota,
+                                  resourceUnit: $resourceUnit)
+                }
+            }
+```
+
+This endpoint create package for tariff.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+tariffId | ID   | Enter the id of the tariff you want to create package
+resourceQuota | ID   |
+resourceUnit | QuotaUnit | 
+
+
+## Create Package
+
+```graphql
+mutation($tariffId: ID!,
+                     $resourceQuota: ID!,
+                     $resourceUnit: QuotaUnit!) {
+                tariff {
+                    createPackage(tariffId: $tariffId,
+                                  resourceQuota: $resourceQuota,
+                                  resourceUnit: $resourceUnit)
+                }
+            }
+```
+
+This endpoint create package for tariff.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type | Description
+---------|------|-------------
+tariffId | ID   | Enter the id of the tariff you want to create package
+resourceQuota | ID   |
+resourceUnit | QuotaUnit | 
