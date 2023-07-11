@@ -388,6 +388,29 @@
               </ul>
           </li>
           <li>
+            <a href="#tariff" class="toc-h1 toc-link" data-title="Tariff">Tariff</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-tariffs" class="toc-h2 toc-link" data-title="Get All Tariffs">Get All Tariffs</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-tariff" class="toc-h2 toc-link" data-title="Get Specific Tariff">Get Specific Tariff</a>
+                  </li>
+                  <li>
+                    <a href="#activate-tariff" class="toc-h2 toc-link" data-title="Activate Tariff">Activate Tariff</a>
+                  </li>
+                  <li>
+                    <a href="#archive-tariff" class="toc-h2 toc-link" data-title="Archive Tariff">Archive Tariff</a>
+                  </li>
+                  <li>
+                    <a href="#create-package" class="toc-h2 toc-link" data-title="Create Package">Create Package</a>
+                  </li>
+                  <li>
+                    <a href="#create-package-2" class="toc-h2 toc-link" data-title="Create Package">Create Package</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -1334,6 +1357,520 @@ Remember — only authorized users can use this request!
 <td>sim_card_id</td>
 <td>ID</td>
 <td>Enter the id of the sim card you want to unzip</td>
+</tr>
+</tbody></table>
+<h1 id='tariff'>Tariff</h1><h2 id='get-all-tariffs'>Get All Tariffs</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">]!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">tariffs</span><span class="p">(</span><span class="n">pagination</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">},</span><span class="w">
+                    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w">
+                    </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">items</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">id</span><span class="w">
+                    </span><span class="n">name</span><span class="w">
+                    </span><span class="n">tariffType</span><span class="w">
+                    </span><span class="n">isArchived</span><span class="w">
+                    </span><span class="n">cost</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">amount</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="n">readable</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">callOutgoingRate</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">amount</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="n">readable</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">callIncomingRate</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">amount</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="n">readable</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">dataRate</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">amount</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="n">readable</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                    </span><span class="n">callOutgoingRateAmount</span><span class="w">
+                    </span><span class="n">callIncomingRateAmount</span><span class="w">
+                    </span><span class="n">dataRateAmount</span><span class="w">
+                    </span><span class="n">duration</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">count</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all tariffs.</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='fields-3'>Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>Internal ID Tariff</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Tariff Name</td>
+</tr>
+<tr>
+<td>tariffType</td>
+<td>String</td>
+<td>One of [&quot;PREPAID_UNLIMITED&quot;, &quot;PREPAID_PACKAGE&quot;, &quot;POSTPAID_MINUTE&quot;, &quot;MARGIN_CALCULATE&quot;, &quot;RENEWAL_PREPAID_PACKAGE&quot;]</td>
+</tr>
+<tr>
+<td>isArchived</td>
+<td>Boolean</td>
+<td>Tariff status</td>
+</tr>
+<tr>
+<td>cost</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Float</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>callOutgoingRate</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Object</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>callIncomingRate</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Float</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>dataRate</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Float</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>callOutgoingRateAmount</td>
+<td>Integer</td>
+<td></td>
+</tr>
+<tr>
+<td>callIncomingRateAmount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>dataRateAmount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>Maximum number of displayed objects</td>
+</tr>
+</tbody></table>
+<h3 id='variables-17'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>The offset query parameter is used to exclude from a response the first N items of a resource collection.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#filters">Filters</a></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
+</tr>
+</tbody></table>
+<h2 id='get-specific-tariff'>Get Specific Tariff</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">tariff</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">id</span><span class="w">
+                </span><span class="n">tariffType</span><span class="w">
+                </span><span class="n">name</span><span class="w">
+                </span><span class="n">duration</span><span class="w">
+                </span><span class="n">callOutgoingRateAmount</span><span class="w">
+                </span><span class="n">callIncomingRateAmount</span><span class="w">
+                </span><span class="n">dataRateAmount</span><span class="w">
+                </span><span class="n">cost</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">amount</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">readable</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">callOutgoingRate</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">amount</span><span class="p">{</span><span class="w">
+                        </span><span class="n">readable</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">callIncomingRate</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">amount</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">readable</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">dataRate</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">amount</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">readable</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">packages</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">id</span><span class="w">
+                    </span><span class="n">resource</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">quota</span><span class="w">
+                        </span><span class="n">unit</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all tariffs.</p>
+<h3 id='http-request-18'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='fields-4'>Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>Internal ID Tariff</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Tariff Name</td>
+</tr>
+<tr>
+<td>tariffType</td>
+<td>String</td>
+<td>One of [&quot;PREPAID_UNLIMITED&quot;, &quot;PREPAID_PACKAGE&quot;, &quot;POSTPAID_MINUTE&quot;, &quot;MARGIN_CALCULATE&quot;, &quot;RENEWAL_PREPAID_PACKAGE&quot;]</td>
+</tr>
+<tr>
+<td>cost</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Float</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>callOutgoingRate</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Object</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>callIncomingRate</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Float</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>dataRate</td>
+<td>Array of objects</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>readable</td>
+<td>Float</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>callOutgoingRateAmount</td>
+<td>Integer</td>
+<td></td>
+</tr>
+<tr>
+<td>callIncomingRateAmount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>dataRateAmount</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>packages</td>
+<td>Array of objects</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>ID Package</td>
+</tr>
+<tr>
+<td>resource</td>
+<td>Array of objects</td>
+<td></td>
+</tr>
+<tr>
+<td>quota</td>
+<td>String</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>Maximum number of displayed objects</td>
+</tr>
+</tbody></table>
+<h3 id='variables-18'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>The offset query parameter is used to exclude from a response the first N items of a resource collection.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#filters">Filters</a></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
+</tr>
+</tbody></table>
+<h2 id='activate-tariff'>Activate Tariff</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$tariffId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">changeTariff</span><span class="p">(</span><span class="n">simcardId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcardId</span><span class="p">,</span><span class="w"> </span><span class="n">tariffId</span><span class="p">:</span><span class="w"> </span><span class="nv">$tariffId</span><span class="p">,</span><span class="w"> </span><span class="n">free</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint change specific tariff for specific simcard.</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-19'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simcardId</td>
+<td>ID</td>
+<td>Enter the id of the sim card you want to change tariff</td>
+</tr>
+<tr>
+<td>tariffId</td>
+<td>ID</td>
+<td>Enter the id of the tariff you want to change</td>
+</tr>
+</tbody></table>
+<h2 id='archive-tariff'>Archive Tariff</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$tariff_id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">tariff</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">archive</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$tariff_id</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint archive specific tariff.</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-20'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tariff_id</td>
+<td>ID</td>
+<td>Enter the id of the tariff you want to archive</td>
+</tr>
+</tbody></table>
+<h2 id='create-package'>Create Package</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$tariffId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w">
+                     </span><span class="nv">$resourceQuota</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w">
+                     </span><span class="nv">$resourceUnit</span><span class="p">:</span><span class="w"> </span><span class="n">QuotaUnit</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">tariff</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">createPackage</span><span class="p">(</span><span class="n">tariffId</span><span class="p">:</span><span class="w"> </span><span class="nv">$tariffId</span><span class="p">,</span><span class="w">
+                                  </span><span class="n">resourceQuota</span><span class="p">:</span><span class="w"> </span><span class="nv">$resourceQuota</span><span class="p">,</span><span class="w">
+                                  </span><span class="n">resourceUnit</span><span class="p">:</span><span class="w"> </span><span class="nv">$resourceUnit</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint create package for tariff.</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-21'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tariffId</td>
+<td>ID</td>
+<td>Enter the id of the tariff you want to create package</td>
+</tr>
+<tr>
+<td>resourceQuota</td>
+<td>ID</td>
+<td></td>
+</tr>
+<tr>
+<td>resourceUnit</td>
+<td>QuotaUnit</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='create-package-2'>Create Package</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$tariffId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w">
+                     </span><span class="nv">$resourceQuota</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w">
+                     </span><span class="nv">$resourceUnit</span><span class="p">:</span><span class="w"> </span><span class="n">QuotaUnit</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">tariff</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">createPackage</span><span class="p">(</span><span class="n">tariffId</span><span class="p">:</span><span class="w"> </span><span class="nv">$tariffId</span><span class="p">,</span><span class="w">
+                                  </span><span class="n">resourceQuota</span><span class="p">:</span><span class="w"> </span><span class="nv">$resourceQuota</span><span class="p">,</span><span class="w">
+                                  </span><span class="n">resourceUnit</span><span class="p">:</span><span class="w"> </span><span class="nv">$resourceUnit</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint create package for tariff.</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-22'>Variables</h3>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tariffId</td>
+<td>ID</td>
+<td>Enter the id of the tariff you want to create package</td>
+</tr>
+<tr>
+<td>resourceQuota</td>
+<td>ID</td>
+<td></td>
+</tr>
+<tr>
+<td>resourceUnit</td>
+<td>QuotaUnit</td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
