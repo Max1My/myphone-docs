@@ -932,3 +932,144 @@ Variable | Type | Description
 tariffId | ID   | Enter the id of the tariff you want to create package
 resourceQuota | ID   |
 resourceUnit | QuotaUnit | 
+
+
+## Update Tariff
+
+```graphql
+            mutation($id: ID!,
+                     $name: String!,
+                     $type: TariffType!,
+                     $duration: Int!, 
+                     $dataCost: Float!, 
+                     $incomingCost: Float!,
+                     $outgoingCost: Float!) {
+                tariff {
+                    updateTariff(id: $id,
+                           name: $name,
+                           type: $type,
+                           duration: $duration, 
+                           dataRateValue: $dataCost,
+                           voiceIncomingRateValue: $incomingCost,
+                           voiceOutgoingRateValue: $outgoingCost)
+                }
+            }
+```
+
+This endpoint update tariff.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type      | Description
+---------|-----------|-------------
+id | ID        | Enter the id of the tariff you want to update
+name | String    | Enter the name of tariff
+type | TariffType | One of ["RENEWAL_PREPAID_PACKAGE", "MARGIN_CALCULATE", "POSTPAID_MINUTE", "PREPAID_PACKAGE"]
+duration | Integer | Enter duration
+dataCost | Float | Enter data cost
+incomingCost | Float | Enter incoming cost
+outgoingCost | Float | Enter outgoing cost
+
+## Delete Package
+
+```graphql
+            mutation($id: ID!) {
+                tariff {
+                    deletePackage(id: $id)
+                }
+            }
+```
+
+This endpoint delete package.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+Variable | Type      | Description
+---------|-----------|-------------
+id | ID        | Enter the id of the tariff you want to delete
+
+
+## Virtual Number
+
+```graphql
+        query($offset: Int, $limit: Int, $filter: [FilterInput], $sort: [SortInput]) {
+            didService {
+                dids(pagination: {offset: $offset, limit: $limit},
+                     filter: $filter,
+                     sort: $sort) {
+                     items {
+                        id
+                        simcard {
+                            simId
+                        }
+                        msisdn
+                        state
+                        rentedAt
+                        attachedAt
+                        isSmsEnabled
+                        cost {
+                            amount {
+                                readable
+                            }
+                        }
+                    }
+                    count
+                }
+            }
+        }
+```
+
+This endpoint retrieve all virtual numbers.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Variables
+
+### Fields
+
+Field | Type             | Description
+------ |------------------| ---------------------
+id | ID               | Internal ID Tariff                                                                                      
+name | String           | Tariff Name
+tariffType | String           | One of ["PREPAID_UNLIMITED", "PREPAID_PACKAGE", "POSTPAID_MINUTE", "MARGIN_CALCULATE", "RENEWAL_PREPAID_PACKAGE"]           
+cost | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                                
+callOutgoingRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Object           | desc                                
+callIncomingRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                                
+dataRate | Array of objects | desc                                
+amount | Integer          | desc                                
+readable | Float            | desc                   
+callOutgoingRateAmount | Integer          |                         
+callIncomingRateAmount | Integer          | desc                                
+dataRateAmount | Integer          | desc                       
+duration | Integer          | desc     
+packages | Array of objects | 
+id | ID               | ID Package
+resource | Array of objects | 
+quota | String           | desc
+unit | Integer          | desc
+count | Integer          | Maximum number of displayed objects 
+
+### Variables
+
+Parameter | Type             | Description
+--------- |------------------| -----------
+offset | Integer          | The offset query parameter is used to exclude from a response the first N items of a resource collection.
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
+filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
