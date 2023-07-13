@@ -414,8 +414,28 @@
                   <li>
                     <a href="#delete-package" class="toc-h2 toc-link" data-title="Delete Package">Delete Package</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#virtual-number" class="toc-h1 toc-link" data-title="Virtual Number">Virtual Number</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#virtual-number" class="toc-h2 toc-link" data-title="Virtual Number">Virtual Number</a>
+                    <a href="#get-all-virtual-numbers" class="toc-h2 toc-link" data-title="Get all virtual numbers">Get all virtual numbers</a>
+                  </li>
+                  <li>
+                    <a href="#get-rent-list" class="toc-h2 toc-link" data-title="Get Rent list">Get Rent list</a>
+                  </li>
+                  <li>
+                    <a href="#rent" class="toc-h2 toc-link" data-title="Rent">Rent</a>
+                  </li>
+                  <li>
+                    <a href="#detach" class="toc-h2 toc-link" data-title="Detach">Detach</a>
+                  </li>
+                  <li>
+                    <a href="#reject" class="toc-h2 toc-link" data-title="Reject">Reject</a>
+                  </li>
+                  <li>
+                    <a href="#rent-deductions" class="toc-h2 toc-link" data-title="Rent Deductions">Rent Deductions</a>
                   </li>
               </ul>
           </li>
@@ -1970,7 +1990,7 @@ Remember — only authorized users can use this request!
 <td>Enter the id of the tariff you want to delete</td>
 </tr>
 </tbody></table>
-<h2 id='virtual-number'>Virtual Number</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">],</span><span class="w"> </span><span class="nv">$sort</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">SortInput</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='virtual-number'>Virtual Number</h1><h2 id='get-all-virtual-numbers'>Get all virtual numbers</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">],</span><span class="w"> </span><span class="nv">$sort</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">SortInput</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="n">didService</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="n">dids</span><span class="p">(</span><span class="n">pagination</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">},</span><span class="w">
                      </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w">
@@ -1999,7 +2019,7 @@ Remember — only authorized users can use this request!
 <p>This endpoint retrieve all virtual numbers.</p>
 <h3 id='http-request-25'>HTTP Request</h3>
 <p><code>POST http://api.myphone.group/partner/graphql</code></p>
-<h3 id='variables-25'>Variables</h3><h3 id='fields-5'>Fields</h3>
+<h3 id='fields-5'>Fields</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2054,77 +2074,12 @@ Remember — only authorized users can use this request!
 </tr>
 <tr>
 <td>amount</td>
-<td>Array of objects</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>amount</td>
 <td>Integer</td>
 <td>desc</td>
 </tr>
 <tr>
 <td>readable</td>
 <td>Float</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>dataRate</td>
-<td>Array of objects</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>Integer</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>readable</td>
-<td>Float</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>callOutgoingRateAmount</td>
-<td>Integer</td>
-<td></td>
-</tr>
-<tr>
-<td>callIncomingRateAmount</td>
-<td>Integer</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>dataRateAmount</td>
-<td>Integer</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>duration</td>
-<td>Integer</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>packages</td>
-<td>Array of objects</td>
-<td></td>
-</tr>
-<tr>
-<td>id</td>
-<td>ID</td>
-<td>ID Package</td>
-</tr>
-<tr>
-<td>resource</td>
-<td>Array of objects</td>
-<td></td>
-</tr>
-<tr>
-<td>quota</td>
-<td>String</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>unit</td>
-<td>Integer</td>
 <td>desc</td>
 </tr>
 <tr>
@@ -2133,7 +2088,261 @@ Remember — only authorized users can use this request!
 <td>Maximum number of displayed objects</td>
 </tr>
 </tbody></table>
+<h3 id='variables-25'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>The offset query parameter is used to exclude from a response the first N items of a resource collection.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#filters">Filters</a></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
+</tr>
+</tbody></table>
+<h2 id='get-rent-list'>Get Rent list</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">query</span><span class="p">(</span><span class="nv">$prefix</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+              </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w">
+              </span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">didService</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">didForRent</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">multitel</span><span class="p">(</span><span class="n">prefix</span><span class="p">:</span><span class="w"> </span><span class="nv">$prefix</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">id</span><span class="w">
+                        </span><span class="n">number</span><span class="w">
+                        </span><span class="n">monthlyPrice</span><span class="w">
+                        </span><span class="n">isSmsEnabled</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieve rent list.</p>
+<h3 id='http-request-26'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='fields-6'>Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>Internal ID Virtual Number</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Array of objects</td>
+<td>Virtual Number</td>
+</tr>
+<tr>
+<td>monthlyPrice</td>
+<td>Decimal</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>isSmsEnabled</td>
+<td>Boolean</td>
+<td>Supported SMS</td>
+</tr>
+</tbody></table>
 <h3 id='variables-26'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>prefix</td>
+<td>String</td>
+<td>Prefix. Example 1785,1681, 1470</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.filter</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>The offset query parameter is used to exclude from a response the first N items of a resource collection.</td>
+</tr>
+</tbody></table>
+<h2 id='rent'>Rent</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">mutation</span><span class="p">(</span><span class="nv">$didId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">didService</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">rent</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">multitel</span><span class="p">(</span><span class="n">didId</span><span class="p">:</span><span class="w"> </span><span class="nv">$didId</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint rent specific number.</p>
+<h3 id='http-request-27'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-27'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>didId</td>
+<td>ID</td>
+<td>Available id&#39;s you can get <a href="http://localhost:4567/?graphql#get_rent_list">this</a></td>
+</tr>
+</tbody></table>
+<h2 id='detach'>Detach</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">mutation</span><span class="p">(</span><span class="nv">$didId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">didService</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">detach</span><span class="p">(</span><span class="n">didId</span><span class="p">:</span><span class="w"> </span><span class="nv">$didId</span><span class="p">)</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint detach number.</p>
+<h3 id='http-request-28'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-28'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>didId</td>
+<td>ID</td>
+<td>Available id&#39;s you can get <a href="http://localhost:4567/?graphql#get_rent_list">this</a></td>
+</tr>
+</tbody></table>
+<h2 id='reject'>Reject</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">mutation</span><span class="p">(</span><span class="nv">$didId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">didService</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">reject</span><span class="p">(</span><span class="n">didId</span><span class="p">:</span><span class="w"> </span><span class="nv">$didId</span><span class="p">)</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint reject number.</p>
+<h3 id='http-request-29'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-29'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>didId</td>
+<td>ID</td>
+<td>Available id&#39;s you can get <a href="http://localhost:4567/?graphql#get_rent_list">this</a></td>
+</tr>
+</tbody></table>
+<h2 id='rent-deductions'>Rent Deductions</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">]){</span><span class="w">
+          </span><span class="n">didRentDeductions</span><span class="p">(</span><span class="n">pagination</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">},</span><span class="w">
+                             </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w">
+                             </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"performedAt"</span><span class="p">}</span><span class="w">
+          </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">items</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="n">id</span><span class="w">
+              </span><span class="n">simCard</span><span class="p">{</span><span class="w">
+                </span><span class="n">simId</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+              </span><span class="n">type</span><span class="w">
+              </span><span class="n">value</span><span class="w">
+              </span><span class="n">performedAt</span><span class="w">
+              </span><span class="n">comment</span><span class="w">
+              </span><span class="n">oldValue</span><span class="w">
+              </span><span class="n">newValue</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+            </span><span class="n">count</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint reject number.</p>
+<h3 id='http-request-30'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='fields-7'>Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>Internal ID Virtual Number</td>
+</tr>
+<tr>
+<td>simCard</td>
+<td>Object</td>
+<td>Simcard</td>
+</tr>
+<tr>
+<td>simId</td>
+<td>String</td>
+<td>External ID Simcard</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Boolean</td>
+<td>Billing Type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Decimal</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>performedAt</td>
+<td>Date</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>oldValue</td>
+<td>Decimal</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>newValue</td>
+<td>Decimal</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>Maximum number of displayed objects</td>
+</tr>
+</tbody></table>
+<h3 id='variables-30'>Variables</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
