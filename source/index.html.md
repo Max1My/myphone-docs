@@ -997,7 +997,9 @@ Variable | Type      | Description
 id | ID        | Enter the id of the tariff you want to delete
 
 
-## Virtual Number
+# Virtual Number
+
+## Get all virtual numbers
 
 ```graphql
         query($offset: Int, $limit: Int, $filter: [FilterInput], $sort: [SortInput]) {
@@ -1033,7 +1035,6 @@ This endpoint retrieve all virtual numbers.
 
 `POST http://api.myphone.group/partner/graphql`
 
-### Variables
 
 ### Fields
 
@@ -1046,24 +1047,183 @@ msisdn | String           | desc
 state | String           | One of ["AVAILABLE_FOR_RENT", "RENTED", "ATTACHED" ]                                
 rentedAt | Date             | desc                                
 attachedAt | Date             | desc                                
-isSmsEnabled | Boolean | Supported sms                              
+isSmsEnabled | Boolean          | Supported sms                              
 cost | Object           | desc                                
-amount | Array of objects | desc                                
 amount | Integer          | desc                                
-readable | Float            | desc                                
-dataRate | Array of objects | desc                                
-amount | Integer          | desc                                
-readable | Float            | desc                   
-callOutgoingRateAmount | Integer          |                         
-callIncomingRateAmount | Integer          | desc                                
-dataRateAmount | Integer          | desc                       
-duration | Integer          | desc     
-packages | Array of objects | 
-id | ID               | ID Package
-resource | Array of objects | 
-quota | String           | desc
-unit | Integer          | desc
+readable | Float            | desc
 count | Integer          | Maximum number of displayed objects 
+
+### Variables
+
+Parameter | Type             | Description
+--------- |------------------| -----------
+offset | Integer          | The offset query parameter is used to exclude from a response the first N items of a resource collection.
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
+filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
+
+
+## Get Rent list
+
+```graphql
+        query($prefix: String!,
+              $limit: Int,
+              $offset: Int) {
+            didService {
+                didForRent {
+                    multitel(prefix: $prefix, limit: $limit, offset: $offset) {
+                        id
+                        number
+                        monthlyPrice
+                        isSmsEnabled
+                    }
+                }
+            }
+        }
+```
+
+This endpoint retrieve rent list.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Fields
+
+Field | Type             | Description
+------ |------------------| ---------------------
+id | ID               | Internal ID Virtual Number                                                                                      
+number | Array of objects | Virtual Number
+monthlyPrice | Decimal          | Price
+isSmsEnabled | Boolean          | Supported SMS             
+
+### Variables
+
+Parameter | Type             | Description                                                                                                                                                                                                                                                                                           
+--------- |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prefix | String           | Prefix. Example 1785,1681, 1470                                                                                                                                                                                                                                                                       
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+offset | Integer | The offset query parameter is used to exclude from a response the first N items of a resource collection.  
+
+
+## Rent
+
+```graphql
+        mutation($didId: ID!) {
+            didService {
+                rent {
+                    multitel(didId: $didId)
+                }
+            }
+        }
+```
+
+This endpoint rent specific number.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+
+### Variables
+
+Parameter | Type | Description                                                                                                                                                                                                                                                                                           
+--------- |------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+didId | ID   | Available id's you can get [this](http://localhost:4567/?graphql#get_rent_list)
+
+
+## Detach
+
+```graphql
+        mutation($didId: ID!) {
+            didService {
+                detach(didId: $didId)
+            }
+        }
+```
+
+This endpoint detach number.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+
+### Variables
+
+Parameter | Type | Description                                                                                                                                                                                                                                                                                           
+--------- |------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+didId | ID   | Available id's you can get [this](http://localhost:4567/?graphql#get_rent_list)
+
+
+## Reject
+
+```graphql
+        mutation($didId: ID!) {
+            didService {
+                reject(didId: $didId)
+            }
+        }
+```
+
+This endpoint reject number.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+
+### Variables
+
+Parameter | Type | Description                                                                                                                                                                                                                                                                                           
+--------- |------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+didId | ID   | Available id's you can get [this](http://localhost:4567/?graphql#get_rent_list)
+
+## Rent Deductions
+
+```graphql
+        query($offset: Int, $limit: Int, $filter: [FilterInput]){
+          didRentDeductions(pagination: {offset: $offset, limit: $limit},
+                             filter: $filter,
+                             sort: {order: DESC, field: "performedAt"}
+          ) {
+            items {
+              id
+              simCard{
+                simId
+              }
+              type
+              value
+              performedAt
+              comment
+              oldValue
+              newValue
+            }
+            count
+          }
+        }
+```
+
+This endpoint reject number.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Fields
+
+Field | Type    | Description
+------ |---------| ---------------------
+id | ID      | Internal ID Virtual Number                                                                                      
+simCard | Object  | Simcard
+simId | String  | External ID Simcard
+type | Boolean | Billing Type
+value | Decimal | desc
+performedAt | Date | desc
+comment | String | desc
+oldValue | Decimal | desc
+newValue | Decimal | desc
+count | Integer | Maximum number of displayed objects 
 
 ### Variables
 
