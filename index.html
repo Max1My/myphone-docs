@@ -440,6 +440,23 @@
               </ul>
           </li>
           <li>
+            <a href="#ota" class="toc-h1 toc-link" data-title="OTA">OTA</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ota-tasks" class="toc-h2 toc-link" data-title="Ota Tasks">Ota Tasks</a>
+                  </li>
+                  <li>
+                    <a href="#send-task" class="toc-h2 toc-link" data-title="Send Task">Send Task</a>
+                  </li>
+                  <li>
+                    <a href="#history" class="toc-h2 toc-link" data-title="History">History</a>
+                  </li>
+                  <li>
+                    <a href="#update-simcard-price" class="toc-h2 toc-link" data-title="Update Simcard Price">Update Simcard Price</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -2280,7 +2297,7 @@ Remember — only authorized users can use this request!
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint reject number.</p>
+<p>This endpoint retrieve all deductions.</p>
 <h3 id='http-request-30'>HTTP Request</h3>
 <p><code>POST http://api.myphone.group/partner/graphql</code></p>
 <h3 id='fields-7'>Fields</h3>
@@ -2369,6 +2386,288 @@ Remember — only authorized users can use this request!
 <td>sort</td>
 <td>Array of objects</td>
 <td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
+</tr>
+</tbody></table>
+<h1 id='ota'>OTA</h1><h2 id='ota-tasks'>Ota Tasks</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">]!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">otaTasks</span><span class="p">(</span><span class="n">pagination</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">},</span><span class="w">
+                    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w">
+                    </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">items</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">id</span><span class="w">
+                    </span><span class="n">otaId</span><span class="w">
+                    </span><span class="n">otaName</span><span class="w">
+                    </span><span class="n">ourName</span><span class="w">
+                    </span><span class="n">description</span><span class="w">
+                    </span><span class="n">price</span><span class="w">
+                    </span><span class="n">simcardPrice</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">count</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieve all tasks.</p>
+<h3 id='http-request-31'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='fields-8'>Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>Internal ID Ota task</td>
+</tr>
+<tr>
+<td>otaId</td>
+<td>ID</td>
+<td>External ID Ota task</td>
+</tr>
+<tr>
+<td>otaName</td>
+<td>String</td>
+<td>Task name</td>
+</tr>
+<tr>
+<td>ourName</td>
+<td>String</td>
+<td>Internal task name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Decimal</td>
+<td>price</td>
+</tr>
+<tr>
+<td>simcardPrice</td>
+<td>Decimal</td>
+<td>Price for simcard</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>Maximum number of displayed objects</td>
+</tr>
+</tbody></table>
+<h3 id='variables-31'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>The offset query parameter is used to exclude from a response the first N items of a resource collection.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#filters">Filters</a></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
+</tr>
+</tbody></table>
+<h2 id='send-task'>Send Task</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+                    </span><span class="err">'partner_id':</span><span class="w"> </span><span class="err">your_id</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'source':</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'ota_id':</span><span class="w"> </span><span class="err">ota_id</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'sim_card_id':</span><span class="w"> </span><span class="err">sim_card_id</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'spn':</span><span class="w"> </span><span class="err">spn</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'message':</span><span class="w"> </span><span class="err">display_text_message</span><span class="p">,</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint send task.</p>
+<h3 id='http-request-32'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/ota-request</code></p>
+<h3 id='fields-9'>Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_id</td>
+<td>ID</td>
+<td>Write to technical support to get an ID</td>
+</tr>
+<tr>
+<td>source</td>
+<td>ID</td>
+<td>Don&#39;t change this</td>
+</tr>
+<tr>
+<td>ota_id</td>
+<td>Integer</td>
+<td>Get <a href="http://localhost:4567/?graphql#ota_tasks">Ota ID</a></td>
+</tr>
+<tr>
+<td>sim_card_id</td>
+<td>String</td>
+<td>Choose <a href="http://localhost:4567/?graphql#get-all-simcards">Simcard ID</a></td>
+</tr>
+<tr>
+<td>spn</td>
+<td>String</td>
+<td>SPN for specific task. Read <a href="https://partner.myphone.group/ota/instruction/">instruction</a></td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Message for specific task. Read <a href="https://partner.myphone.group/ota/instruction/">instruction</a></td>
+</tr>
+</tbody></table>
+<h2 id='history'>History</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">],</span><span class="nv">$simId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">){</span><span class="w">
+            </span><span class="n">otaRequestsLogs</span><span class="p">(</span><span class="n">pagination</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">},</span><span class="w">
+                    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w">
+                    </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">},</span><span class="w">
+                    </span><span class="n">simId</span><span class="p">:</span><span class="w"> </span><span class="nv">$simId</span><span class="p">)</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="n">items</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="n">id</span><span class="w">
+              </span><span class="n">statusId</span><span class="w">
+              </span><span class="n">iccid</span><span class="w">
+              </span><span class="n">appletName</span><span class="w">
+              </span><span class="n">createdAt</span><span class="w">
+              </span><span class="n">source</span><span class="w">
+              </span><span class="n">ourName</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+            </span><span class="n">count</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieve all history.</p>
+<h3 id='http-request-33'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='fields-10'>Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>Internal ID Ota history</td>
+</tr>
+<tr>
+<td>otaId</td>
+<td>ID</td>
+<td>External ID Ota task</td>
+</tr>
+<tr>
+<td>iccid</td>
+<td>ID</td>
+<td>Task name</td>
+</tr>
+<tr>
+<td>appletName</td>
+<td>String</td>
+<td>Internal task name</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>Date</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>source</td>
+<td>Integer</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>ourName</td>
+<td>String</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>Maximum number of displayed objects</td>
+</tr>
+</tbody></table>
+<h3 id='variables-32'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>simId</td>
+<td>Integer</td>
+<td>Internal Simcard ID</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>The offset query parameter is used to exclude from a response the first N items of a resource collection.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#filters">Filters</a></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Array of objects</td>
+<td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
+</tr>
+</tbody></table>
+<h2 id='update-simcard-price'>Update Simcard Price</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">mutation</span><span class="p">(</span><span class="nv">$ota_task_id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$simcard_price</span><span class="p">:</span><span class="w"> </span><span class="nb">Float</span><span class="p">!){</span><span class="w">
+                </span><span class="n">otaTask</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">otaChangeSimcardPrice</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$ota_task_id</span><span class="p">,</span><span class="w"> </span><span class="n">simcardPrice</span><span class="p">:</span><span class="w"> </span><span class="nv">$simcard_price</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="w">   
+            </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint update simcard price for specific ota task.</p>
+<h3 id='http-request-34'>HTTP Request</h3>
+<p><code>POST http://api.myphone.group/partner/graphql</code></p>
+<h3 id='variables-33'>Variables</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>$ota_task_id</td>
+<td>ID</td>
+<td>Internal Task ID</td>
+</tr>
+<tr>
+<td>$simcard_price</td>
+<td>Float</td>
+<td>Price</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
