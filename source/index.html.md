@@ -1204,7 +1204,7 @@ didId | ID   | Available id's you can get [this](http://localhost:4567/?graphql#
         }
 ```
 
-This endpoint reject number.
+This endpoint retrieve all deductions.
 
 ### HTTP Request
 
@@ -1233,3 +1233,164 @@ offset | Integer          | The offset query parameter is used to exclude from a
 limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
 filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
 sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
+
+
+# OTA
+
+## Ota Tasks
+
+```graphql
+        query($offset: Int, $limit: Int, $filter: [FilterInput]!) {
+            otaTasks(pagination: {offset: $offset, limit: $limit},
+                    filter: $filter,
+                    sort: {order: DESC, field: "id"}) {
+                items {
+                    id
+                    otaId
+                    otaName
+                    ourName
+                    description
+                    price
+                    simcardPrice
+                }
+                count
+            }
+        }
+```
+
+This endpoint retrieve all tasks.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Fields
+
+Field | Type    | Description
+------ |---------| ---------------------
+id | ID      | Internal ID Ota task                                                                                  
+otaId | ID      | External ID Ota task
+otaName | String  | Task name
+ourName | String  | Internal task name
+description | String  | desc
+price | Decimal | price
+simcardPrice | Decimal | Price for simcard
+count | Integer | Maximum number of displayed objects 
+
+### Variables
+
+Parameter | Type             | Description
+--------- |------------------| -----------
+offset | Integer          | The offset query parameter is used to exclude from a response the first N items of a resource collection.
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
+filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
+
+
+## Send Task
+
+```json
+{
+                    'partner_id': your_id,
+                    'source': 1,
+                    'ota_id': ota_id,
+                    'sim_card_id': sim_card_id,
+                    'spn': spn,
+                    'message': display_text_message,
+                }
+```
+
+This endpoint send task.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/ota-request`
+
+### Fields
+
+Field | Type    | Description
+------ |---------| ---------------------
+partner_id | ID      | Write to technical support to get an ID                                                                           
+source | ID      | Don't change this
+ota_id | Integer | Get [Ota ID](http://localhost:4567/?graphql#ota_tasks)
+sim_card_id | String  | Choose [Simcard ID](http://localhost:4567/?graphql#get-all-simcards)
+spn | String  | SPN for specific task. Read [instruction](https://partner.myphone.group/ota/instruction/)
+message | String  | Message for specific task. Read [instruction](https://partner.myphone.group/ota/instruction/)
+
+
+## History
+
+```graphql
+        query($offset: Int, $limit: Int, $filter: [FilterInput],$simId: String){
+            otaRequestsLogs(pagination: {offset: $offset, limit: $limit},
+                    filter: $filter,
+                    sort: {order: DESC, field: "id"},
+                    simId: $simId)
+         {
+            items {
+              id
+              statusId
+              iccid
+              appletName
+              createdAt
+              source
+              ourName
+            }
+            count
+          }
+        }
+```
+
+This endpoint retrieve all history.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+### Fields
+
+Field | Type    | Description
+------ |---------| ---------------------
+id | ID      | Internal ID Ota history                                                                                
+otaId | ID      | External ID Ota task
+iccid | ID      | Task name
+appletName | String  | Internal task name
+createdAt | Date    | desc
+source | Integer | desc
+ourName | String  | desc
+count | Integer | Maximum number of displayed objects 
+
+### Variables
+
+Parameter | Type             | Description
+--------- |------------------| -----------
+simId | Integer | Internal Simcard ID
+offset | Integer          | The offset query parameter is used to exclude from a response the first N items of a resource collection.
+limit | Integer          | You can combine the limit and the offset options to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request. That is, top results are selected from a collection where a set of items is already excluded.
+filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#filters)
+sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
+
+
+## Update Simcard Price
+
+```graphql
+        mutation($ota_task_id: ID!, $simcard_price: Float!){
+                otaTask {
+                    otaChangeSimcardPrice(id: $ota_task_id, simcardPrice: $simcard_price)
+                }   
+            }
+```
+
+This endpoint update simcard price for specific ota task.
+
+### HTTP Request
+
+`POST http://api.myphone.group/partner/graphql`
+
+
+### Variables
+
+Parameter | Type  | Description
+--------- |-------| -----------
+$ota_task_id | ID    | Internal Task ID
+$simcard_price | Float | Price
