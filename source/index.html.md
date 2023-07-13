@@ -1039,16 +1039,16 @@ This endpoint retrieve all virtual numbers.
 
 Field | Type             | Description
 ------ |------------------| ---------------------
-id | ID               | Internal ID Tariff                                                                                      
-name | String           | Tariff Name
-tariffType | String           | One of ["PREPAID_UNLIMITED", "PREPAID_PACKAGE", "POSTPAID_MINUTE", "MARGIN_CALCULATE", "RENEWAL_PREPAID_PACKAGE"]           
-cost | Array of objects | desc                                
-amount | Integer          | desc                                
-readable | Float            | desc                                
-callOutgoingRate | Array of objects | desc                                
-amount | Integer          | desc                                
-readable | Object           | desc                                
-callIncomingRate | Array of objects | desc                                
+id | ID               | Internal ID Virtual Number                                                                                      
+simcard | Array of objects | Simcard
+simId | String           | External Simcard ID
+msisdn | String           | desc                                
+state | String           | One of ["AVAILABLE_FOR_RENT", "RENTED", "ATTACHED" ]                                
+rentedAt | Date             | desc                                
+attachedAt | Date             | desc                                
+isSmsEnabled | Boolean | Supported sms                              
+cost | Object           | desc                                
+amount | Array of objects | desc                                
 amount | Integer          | desc                                
 readable | Float            | desc                                
 dataRate | Array of objects | desc                                
