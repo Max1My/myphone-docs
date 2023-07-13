@@ -2010,50 +2010,50 @@ Remember — only authorized users can use this request!
 <tr>
 <td>id</td>
 <td>ID</td>
-<td>Internal ID Tariff</td>
+<td>Internal ID Virtual Number</td>
 </tr>
 <tr>
-<td>name</td>
-<td>String</td>
-<td>Tariff Name</td>
+<td>simcard</td>
+<td>Array of objects</td>
+<td>Simcard</td>
 </tr>
 <tr>
-<td>tariffType</td>
+<td>simId</td>
 <td>String</td>
-<td>One of [&quot;PREPAID_UNLIMITED&quot;, &quot;PREPAID_PACKAGE&quot;, &quot;POSTPAID_MINUTE&quot;, &quot;MARGIN_CALCULATE&quot;, &quot;RENEWAL_PREPAID_PACKAGE&quot;]</td>
+<td>External Simcard ID</td>
+</tr>
+<tr>
+<td>msisdn</td>
+<td>String</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>One of [&quot;AVAILABLE_FOR_RENT&quot;, &quot;RENTED&quot;, &quot;ATTACHED&quot; ]</td>
+</tr>
+<tr>
+<td>rentedAt</td>
+<td>Date</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>attachedAt</td>
+<td>Date</td>
+<td>desc</td>
+</tr>
+<tr>
+<td>isSmsEnabled</td>
+<td>Boolean</td>
+<td>Supported sms</td>
 </tr>
 <tr>
 <td>cost</td>
-<td>Array of objects</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>Integer</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>readable</td>
-<td>Float</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>callOutgoingRate</td>
-<td>Array of objects</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>Integer</td>
-<td>desc</td>
-</tr>
-<tr>
-<td>readable</td>
 <td>Object</td>
 <td>desc</td>
 </tr>
 <tr>
-<td>callIncomingRate</td>
+<td>amount</td>
 <td>Array of objects</td>
 <td>desc</td>
 </tr>
