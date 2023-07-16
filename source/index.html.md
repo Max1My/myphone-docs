@@ -193,23 +193,23 @@ id | ID      | Internal ID Simcard
 iccidPlastic | String  | It's a unique 18-22 digit code that includes a SIM card's country, home network, and identification number. 
 simId | String  | Your external sim card ID           
 isBlocked | Boolean | Sim card status                     
-allowFreeCallerIdChange | Boolean | desc                                
-allowFreeVoiceSubstitution | Boolean | desc                                
-resource | Array of objects | desc                                
-balance | Float   | desc                                
-dataBalance | Float   | desc                                
-fmcs | Object  | desc                                
-msisdn | String  | desc                                
-callerIds | List    | desc                                
-msisdn | String  | desc                                
-externalMsisdns | List    | desc                                
-msisdn | String  | desc                                
+allowFreeCallerIdChange | Boolean | is free change of number substitution allowed (paid / free) - not used                                
+allowFreeVoiceSubstitution | Boolean | is free voice change allowed (paid/free) - not used                                
+resource | Array of objects | contains the value of balance and date-balance                                
+balance | Float   | the amount of available funds on the (U)SIM-card for the consumption of services                                
+dataBalance | Float   | the amount of available funds on a (U)SIM-card for Internet consumption, if a split balance is provided for the admin panel - seems to be outdated                                
+fmcs | Object  | contains fmс (U)SIM-card number, which is used for calls within the network and within the same admin panel                                
+msisdn | String  | fmс number                                
+callerIds | List    | contains a substitution of the (U)SIM-card number, which is used when making calls                                
+msisdn | String  | number substitution                                
+externalMsisdns | List    | contains a list of DID numbers that are tied to a (U)SIM-card                                
+msisdn | String  | DID number                                
 currentTariff | Object  | Current Tarrif                      
 name | String  | Tarrif Name                         
-packageTotalCallsMaxDuration | Integer | desc                                
+packageTotalCallsMaxDuration | Integer | maximum call duration for the tariff - not used                                
 tariffType | String  | Tariff Type                         
 profile | String  | Sim Card Profile(S1, S2, etc.).     
-description | String  | desc                                
+description | String  | (U)SIM-card description/tag, may contain some service information                                
 latestActivity | Date    | Latest Activity                     
 tariffExpiresAt | Date    | Tariff Expires At           
 imei | String  | imei                                
@@ -303,23 +303,23 @@ id | ID      | Internal ID Simcard
 iccidPlastic | String  | It's a unique 18-22 digit code that includes a SIM card's country, home network, and identification number. 
 simId | String  | Your external sim card ID           
 isBlocked | Boolean | Sim card status                     
-allowFreeCallerIdChange | Boolean | desc                                
-allowFreeVoiceSubstitution | Boolean | desc                                
-resource | Array of objects | desc                                
-balance | Float   | desc                                
-dataBalance | Float   | desc                                
-fmcs | Object  | desc                                
-msisdn | String  | desc                                
-callerIds | List    | desc                                
-msisdn | String  | desc                                
-externalMsisdns | List    | desc                                
-msisdn | String  | desc                                
+allowFreeCallerIdChange | Boolean | is free change of number substitution allowed (paid / free) - not used                                
+allowFreeVoiceSubstitution | Boolean | is free voice change allowed (paid/free) - not used                                
+resource | Array of objects | contains the value of balance and date-balance                                
+balance | Float   | the amount of available funds on the (U)SIM-card for the consumption of services                                
+dataBalance | Float   | the amount of available funds on a (U)SIM-card for Internet consumption, if a split balance is provided for the admin panel - seems to be outdated                                
+fmcs | Object  | contains fmс (U)SIM-card number, which is used for calls within the network and within the same admin panel                                
+msisdn | String  | fmс number                                
+callerIds | List    | contains a substitution of the (U)SIM-card number, which is used when making calls                                
+msisdn | String  | number substitution                                
+externalMsisdns | List    | contains a list of DID numbers that are tied to a (U)SIM-card                                
+msisdn | String  | DID number                                
 currentTariff | Object  | Current Tarrif                      
 name | String  | Tarrif Name                         
-packageTotalCallsMaxDuration | Integer | desc                                
+packageTotalCallsMaxDuration | Integer | maximum call duration for the tariff - not used                                
 tariffType | String  | Tariff Type                         
 profile | String  | Sim Card Profile(S1, S2, etc.).     
-description | String  | desc                                
+description | String  | (U)SIM-card description/tag, may contain some service information                                
 latestActivity | Date    | Latest Activity                     
 tariffExpiresAt | Date    | Tariff Expires At           
 imei | String  | imei                                
@@ -457,7 +457,7 @@ Variable | Type | Description
 ---------|------|-------------
 simcardId | ID | Enter the id of the sim card you want to charge
 amount | Float | Enter the replenishment amount
-comment | String | Destination
+comment | String | write-off purpos
 
 ## Charge Data Balance
 
@@ -483,7 +483,7 @@ Variable | Type | Description
 ---------|------|-------------
 simcardId | ID | Enter the id of the sim card you want to charge
 amount | Float | Enter the replenishment amount
-comment | String | Destination
+comment | String | write-off purpose
 
 ## Recharge Balance
 
@@ -509,7 +509,7 @@ Variable | Type | Description
 ---------|------|-------------
 simcardId | ID | Enter the id of the sim card you want to charge
 amount | Float | Enter the replenishment amount
-comment | String | Destination
+comment | String | purpose of replenishment
 
 ## Recharge Data Balance
 
@@ -535,7 +535,7 @@ Variable | Type | Description
 ---------|------|-------------
 simcardId | ID | Enter the id of the sim card you want to charge
 amount | Float | Enter the replenishment amount
-comment | String | Destination
+comment | String | purpose of replenishment
 
 
 ## Change Tariff
@@ -559,10 +559,10 @@ This endpoint change tariff for specific simcard.
 Variable | Type   | Description
 ---------|--------|-------------
 simcardId | ID     | Enter the id of the sim card you want to charge
-tariffId | ID     | Get Available tariffs you can [This]()
+tariffId | ID     | Get Available tariffs you can [This](http://localhost:4567/?graphql#get_all_tariffs)
 
 
-### Update Description
+## Update Description
 
 ```graphql
 mutation($sim_card_id: ID!, $description: String!){
