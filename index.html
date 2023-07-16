@@ -377,6 +377,9 @@
                     <a href="#change-tariff" class="toc-h2 toc-link" data-title="Change Tariff">Change Tariff</a>
                   </li>
                   <li>
+                    <a href="#update-description" class="toc-h2 toc-link" data-title="Update Description">Update Description</a>
+                  </li>
+                  <li>
                     <a href="#change-remaining-tariff-days" class="toc-h2 toc-link" data-title="Change Remaining Tariff Days">Change Remaining Tariff Days</a>
                   </li>
                   <li>
@@ -670,57 +673,57 @@ You must replace <code>token</code> with your personal API key.
 <tr>
 <td>allowFreeCallerIdChange</td>
 <td>Boolean</td>
-<td>desc</td>
+<td>is free change of number substitution allowed (paid / free) - not used</td>
 </tr>
 <tr>
 <td>allowFreeVoiceSubstitution</td>
 <td>Boolean</td>
-<td>desc</td>
+<td>is free voice change allowed (paid/free) - not used</td>
 </tr>
 <tr>
 <td>resource</td>
 <td>Array of objects</td>
-<td>desc</td>
+<td>contains the value of balance and date-balance</td>
 </tr>
 <tr>
 <td>balance</td>
 <td>Float</td>
-<td>desc</td>
+<td>the amount of available funds on the (U)SIM-card for the consumption of services</td>
 </tr>
 <tr>
 <td>dataBalance</td>
 <td>Float</td>
-<td>desc</td>
+<td>the amount of available funds on a (U)SIM-card for Internet consumption, if a split balance is provided for the admin panel - seems to be outdated</td>
 </tr>
 <tr>
 <td>fmcs</td>
 <td>Object</td>
-<td>desc</td>
+<td>contains fmс (U)SIM-card number, which is used for calls within the network and within the same admin panel</td>
 </tr>
 <tr>
 <td>msisdn</td>
 <td>String</td>
-<td>desc</td>
+<td>fmс number</td>
 </tr>
 <tr>
 <td>callerIds</td>
 <td>List</td>
-<td>desc</td>
+<td>contains a substitution of the (U)SIM-card number, which is used when making calls</td>
 </tr>
 <tr>
 <td>msisdn</td>
 <td>String</td>
-<td>desc</td>
+<td>number substitution</td>
 </tr>
 <tr>
 <td>externalMsisdns</td>
 <td>List</td>
-<td>desc</td>
+<td>contains a list of DID numbers that are tied to a (U)SIM-card</td>
 </tr>
 <tr>
 <td>msisdn</td>
 <td>String</td>
-<td>desc</td>
+<td>DID number</td>
 </tr>
 <tr>
 <td>currentTariff</td>
@@ -735,7 +738,7 @@ You must replace <code>token</code> with your personal API key.
 <tr>
 <td>packageTotalCallsMaxDuration</td>
 <td>Integer</td>
-<td>desc</td>
+<td>maximum call duration for the tariff - not used</td>
 </tr>
 <tr>
 <td>tariffType</td>
@@ -750,7 +753,7 @@ You must replace <code>token</code> with your personal API key.
 <tr>
 <td>description</td>
 <td>String</td>
-<td>desc</td>
+<td>(U)SIM-card description/tag, may contain some service information</td>
 </tr>
 <tr>
 <td>latestActivity</td>
@@ -902,57 +905,57 @@ Remember — only authorized users can use this request!
 <tr>
 <td>allowFreeCallerIdChange</td>
 <td>Boolean</td>
-<td>desc</td>
+<td>is free change of number substitution allowed (paid / free) - not used</td>
 </tr>
 <tr>
 <td>allowFreeVoiceSubstitution</td>
 <td>Boolean</td>
-<td>desc</td>
+<td>is free voice change allowed (paid/free) - not used</td>
 </tr>
 <tr>
 <td>resource</td>
 <td>Array of objects</td>
-<td>desc</td>
+<td>contains the value of balance and date-balance</td>
 </tr>
 <tr>
 <td>balance</td>
 <td>Float</td>
-<td>desc</td>
+<td>the amount of available funds on the (U)SIM-card for the consumption of services</td>
 </tr>
 <tr>
 <td>dataBalance</td>
 <td>Float</td>
-<td>desc</td>
+<td>the amount of available funds on a (U)SIM-card for Internet consumption, if a split balance is provided for the admin panel - seems to be outdated</td>
 </tr>
 <tr>
 <td>fmcs</td>
 <td>Object</td>
-<td>desc</td>
+<td>contains fmс (U)SIM-card number, which is used for calls within the network and within the same admin panel</td>
 </tr>
 <tr>
 <td>msisdn</td>
 <td>String</td>
-<td>desc</td>
+<td>fmс number</td>
 </tr>
 <tr>
 <td>callerIds</td>
 <td>List</td>
-<td>desc</td>
+<td>contains a substitution of the (U)SIM-card number, which is used when making calls</td>
 </tr>
 <tr>
 <td>msisdn</td>
 <td>String</td>
-<td>desc</td>
+<td>number substitution</td>
 </tr>
 <tr>
 <td>externalMsisdns</td>
 <td>List</td>
-<td>desc</td>
+<td>contains a list of DID numbers that are tied to a (U)SIM-card</td>
 </tr>
 <tr>
 <td>msisdn</td>
 <td>String</td>
-<td>desc</td>
+<td>DID number</td>
 </tr>
 <tr>
 <td>currentTariff</td>
@@ -967,7 +970,7 @@ Remember — only authorized users can use this request!
 <tr>
 <td>packageTotalCallsMaxDuration</td>
 <td>Integer</td>
-<td>desc</td>
+<td>maximum call duration for the tariff - not used</td>
 </tr>
 <tr>
 <td>tariffType</td>
@@ -982,7 +985,7 @@ Remember — only authorized users can use this request!
 <tr>
 <td>description</td>
 <td>String</td>
-<td>desc</td>
+<td>(U)SIM-card description/tag, may contain some service information</td>
 </tr>
 <tr>
 <td>latestActivity</td>
@@ -1166,7 +1169,7 @@ Remember — only authorized users can use this request!
 <tr>
 <td>comment</td>
 <td>String</td>
-<td>Destination</td>
+<td>write-off purpos</td>
 </tr>
 </tbody></table>
 <h2 id='charge-data-balance'>Charge Data Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$amount</span><span class="p">:</span><span class="w"> </span><span class="n">Decimal</span><span class="p">!,</span><span class="w"> </span><span class="nv">$comment</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1201,7 +1204,7 @@ Remember — only authorized users can use this request!
 <tr>
 <td>comment</td>
 <td>String</td>
-<td>Destination</td>
+<td>write-off purpose</td>
 </tr>
 </tbody></table>
 <h2 id='recharge-balance'>Recharge Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$amount</span><span class="p">:</span><span class="w"> </span><span class="n">Decimal</span><span class="p">!,</span><span class="w"> </span><span class="nv">$comment</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1236,7 +1239,7 @@ Remember — only authorized users can use this request!
 <tr>
 <td>comment</td>
 <td>String</td>
-<td>Destination</td>
+<td>purpose of replenishment</td>
 </tr>
 </tbody></table>
 <h2 id='recharge-data-balance'>Recharge Data Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$amount</span><span class="p">:</span><span class="w"> </span><span class="n">Decimal</span><span class="p">!,</span><span class="w"> </span><span class="nv">$comment</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1271,7 +1274,7 @@ Remember — only authorized users can use this request!
 <tr>
 <td>comment</td>
 <td>String</td>
-<td>Destination</td>
+<td>purpose of replenishment</td>
 </tr>
 </tbody></table>
 <h2 id='change-tariff'>Change Tariff</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$simcardId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$tariffId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1299,10 +1302,10 @@ Remember — only authorized users can use this request!
 <tr>
 <td>tariffId</td>
 <td>ID</td>
-<td>Get Available tariffs you can <a href="#">This</a></td>
+<td>Get Available tariffs you can <a href="http://localhost:4567/?graphql#get_all_tariffs">This</a></td>
 </tr>
 </tbody></table>
-<h3 id='update-description'>Update Description</h3><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$sim_card_id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$description</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!){</span><span class="w">
+<h2 id='update-description'>Update Description</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="p">(</span><span class="nv">$sim_card_id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$description</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!){</span><span class="w">
                 </span><span class="n">simcard</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="n">updateDescription</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$sim_card_id</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="p">:</span><span class="w"> </span><span class="nv">$description</span><span class="p">)</span><span class="w">
                 </span><span class="p">}</span><span class="w">   
