@@ -559,7 +559,7 @@ This endpoint change tariff for specific simcard.
 Variable | Type   | Description
 ---------|--------|-------------
 simcardId | ID     | Enter the id of the sim card you want to charge
-tariffId | ID     | Get Available tariffs you can [This](http://localhost:4567/?graphql#get_all_tariffs)
+tariffId | ID     | Get Available tariffs you can [This](http://localhost:4567/?graphql#get-all-tariffs)
 
 
 ## Update Description
