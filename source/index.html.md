@@ -1287,35 +1287,57 @@ filter | Array of objects | Read about [Filters](http://localhost:4567/?graphql#
 sort | Array of objects | Read about [Sorting](http://localhost:4567/?graphql#sortings)
 
 
-## Send Task
+[//]: # (## Send Task)
 
-```json
-{
-                    'partner_id': your_id,
-                    'source': 1,
-                    'ota_id': ota_id,
-                    'sim_card_id': sim_card_id,
-                    'spn': spn,
-                    'message': display_text_message,
-                }
-```
+[//]: # ()
+[//]: # (```json)
 
-This endpoint send task.
+[//]: # ({)
 
-### HTTP Request
+[//]: # (                    'partner_id': your_id,)
 
-`POST http://api.myphone.group/partner/ota-request`
+[//]: # (                    'source': 1,)
 
-### Fields
+[//]: # (                    'ota_id': ota_id,)
 
-Field | Type    | Description
------- |---------| ---------------------
-partner_id | ID      | Write to technical support to get an ID                                                                           
-source | ID      | Don't change this
-ota_id | Integer | Get [Ota ID](http://localhost:4567/?graphql#ota_tasks)
-sim_card_id | String  | Choose [Simcard ID](http://localhost:4567/?graphql#get-all-simcards)
-spn | String  | SPN for specific task. Read [instruction](https://partner.myphone.group/ota/instruction/)
-message | String  | Message for specific task. Read [instruction](https://partner.myphone.group/ota/instruction/)
+[//]: # (                    'sim_card_id': sim_card_id,)
+
+[//]: # (                    'spn': spn,)
+
+[//]: # (                    'message': display_text_message,)
+
+[//]: # (                })
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (This endpoint send task.)
+
+[//]: # ()
+[//]: # (### HTTP Request)
+
+[//]: # ()
+[//]: # (`POST http://api.myphone.group/partner/ota-request`)
+
+[//]: # ()
+[//]: # (### Fields)
+
+[//]: # ()
+[//]: # (Field | Type    | Description)
+
+[//]: # (------ |---------| ---------------------)
+
+[//]: # (partner_id | ID      | Write to technical support to get an ID                                                                           )
+
+[//]: # (source | ID      | Don't change this)
+
+[//]: # (ota_id | Integer | Get [Ota ID]&#40;http://localhost:4567/?graphql#ota_tasks&#41;)
+
+[//]: # (sim_card_id | String  | Choose [Simcard ID]&#40;http://localhost:4567/?graphql#get-all-simcards&#41;)
+
+[//]: # (spn | String  | SPN for specific task. Read [instruction]&#40;https://partner.myphone.group/ota/instruction/&#41;)
+
+[//]: # (message | String  | Message for specific task. Read [instruction]&#40;https://partner.myphone.group/ota/instruction/&#41;)
 
 
 ## History
