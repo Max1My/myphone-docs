@@ -449,9 +449,6 @@
                     <a href="#ota-tasks" class="toc-h2 toc-link" data-title="Ota Tasks">Ota Tasks</a>
                   </li>
                   <li>
-                    <a href="#send-task" class="toc-h2 toc-link" data-title="Send Task">Send Task</a>
-                  </li>
-                  <li>
                     <a href="#history" class="toc-h2 toc-link" data-title="History">History</a>
                   </li>
                   <li>
@@ -2488,57 +2485,18 @@ Remember — only authorized users can use this request!
 <td>Read about <a href="http://localhost:4567/?graphql#sortings">Sorting</a></td>
 </tr>
 </tbody></table>
-<h2 id='send-task'>Send Task</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-                    </span><span class="err">'partner_id':</span><span class="w"> </span><span class="err">your_id</span><span class="p">,</span><span class="w">
-                    </span><span class="err">'source':</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="err">'ota_id':</span><span class="w"> </span><span class="err">ota_id</span><span class="p">,</span><span class="w">
-                    </span><span class="err">'sim_card_id':</span><span class="w"> </span><span class="err">sim_card_id</span><span class="p">,</span><span class="w">
-                    </span><span class="err">'spn':</span><span class="w"> </span><span class="err">spn</span><span class="p">,</span><span class="w">
-                    </span><span class="err">'message':</span><span class="w"> </span><span class="err">display_text_message</span><span class="p">,</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint send task.</p>
-<h3 id='http-request-32'>HTTP Request</h3>
-<p><code>POST http://api.myphone.group/partner/ota-request</code></p>
-<h3 id='fields-9'>Fields</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>partner_id</td>
-<td>ID</td>
-<td>Write to technical support to get an ID</td>
-</tr>
-<tr>
-<td>source</td>
-<td>ID</td>
-<td>Don&#39;t change this</td>
-</tr>
-<tr>
-<td>ota_id</td>
-<td>Integer</td>
-<td>Get <a href="http://localhost:4567/?graphql#ota_tasks">Ota ID</a></td>
-</tr>
-<tr>
-<td>sim_card_id</td>
-<td>String</td>
-<td>Choose <a href="http://localhost:4567/?graphql#get-all-simcards">Simcard ID</a></td>
-</tr>
-<tr>
-<td>spn</td>
-<td>String</td>
-<td>SPN for specific task. Read <a href="https://partner.myphone.group/ota/instruction/">instruction</a></td>
-</tr>
-<tr>
-<td>message</td>
-<td>String</td>
-<td>Message for specific task. Read <a href="https://partner.myphone.group/ota/instruction/">instruction</a></td>
-</tr>
-</tbody></table>
+
+<p><a href="#" title="message | String  | Message for specific task. Read [instruction]&amp;#40;https://partner.myphone.group/ota/instruction/&amp;#41;">//</a>: # ()</p>
+
+<p><a href="#" title="message | String  | Message for specific task. Read [instruction]&amp;#40;https://partner.myphone.group/ota/instruction/&amp;#41;">//</a>: # ()</p>
+
+<p><a href="#" title="message | String  | Message for specific task. Read [instruction]&amp;#40;https://partner.myphone.group/ota/instruction/&amp;#41;">//</a>: # ()</p>
+
+<p><a href="#" title="message | String  | Message for specific task. Read [instruction]&amp;#40;https://partner.myphone.group/ota/instruction/&amp;#41;">//</a>: # ()</p>
+
+<p><a href="#" title="message | String  | Message for specific task. Read [instruction]&amp;#40;https://partner.myphone.group/ota/instruction/&amp;#41;">//</a>: # ()</p>
+
+<p><a href="#" title="message | String  | Message for specific task. Read [instruction]&amp;#40;https://partner.myphone.group/ota/instruction/&amp;#41;">//</a>: # ()</p>
 <h2 id='history'>History</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">        </span><span class="k">query</span><span class="p">(</span><span class="nv">$offset</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$limit</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> </span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">FilterInput</span><span class="p">],</span><span class="nv">$simId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">){</span><span class="w">
             </span><span class="n">otaRequestsLogs</span><span class="p">(</span><span class="n">pagination</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">offset</span><span class="p">:</span><span class="w"> </span><span class="nv">$offset</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="nv">$limit</span><span class="p">},</span><span class="w">
                     </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w">
@@ -2559,9 +2517,9 @@ Remember — only authorized users can use this request!
         </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieve all history.</p>
-<h3 id='http-request-33'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>POST http://api.myphone.group/partner/graphql</code></p>
-<h3 id='fields-10'>Fields</h3>
+<h3 id='fields-9'>Fields</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2651,7 +2609,7 @@ Remember — only authorized users can use this request!
             </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint update simcard price for specific ota task.</p>
-<h3 id='http-request-34'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>POST http://api.myphone.group/partner/graphql</code></p>
 <h3 id='variables-33'>Variables</h3>
 <table><thead>
